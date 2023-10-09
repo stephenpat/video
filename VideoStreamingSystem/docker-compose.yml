@@ -1,0 +1,24 @@
+version: '3'
+services:
+  upload_video_app:
+    build: ./upload_video_app
+    ports:
+      - "3001:3000"
+  video_streaming_app:
+    build: ./video_streaming_app
+    ports:
+      - "3002:3000"
+  auth_service:
+    build: ./auth_service
+    ports:
+      - "3000:3000"
+  file_system_service:
+    build: ./file_system_service
+    ports:
+      - "3004:3000"
+  mysql_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3307:3306"
